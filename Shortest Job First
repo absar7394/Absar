@@ -1,6 +1,14 @@
   #include <stdio.h>
  #include <stdlib.h>
   #include <string.h>
+  
+  
+  bool check(struct process p[],int total,int currently)
+{    if(p[total].bursttime!=0 && p[total].priority>p[currently].priority)  {       
+return true;       
+}    else
+return false;
+
   int main()
  
 {
