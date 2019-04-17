@@ -2,29 +2,31 @@
  #include <stdlib.h>
   #include <string.h>
   
-  
-  bool check(struct process p[],int total,int currently)
-{    if(p[total].bursttime!=0 && p[total].priority>p[currently].priority)  {       
-return true;       
-}    else
-return false;
+
 
   int main()
  
 {
  
- FILE *fp = fopen("cpu_burst.txt", "r");
   int bt[20],p[20],wt[20],tat[20],i=0,j,n=5,total=0,pos,temp;
      float avg_wt,avg_tat;
-  printf("\nReading CPU_BURST.txt File\n");
-    
-     while((getc(fp))!=EOF)
-     {
  
-         fscanf(fp, "%d", &bt[i]);
+    int ck=0;
+printf("Enter total No of processes\n");
+	scanf("%d",&ck);
+	int totalno=1;
+     while(ck>0)
+     {
+ printf("Enter Process No %d BurstTime\t",totalno++);
+ 
+         scanf("%d", &bt[i]);
+       //  printf("%d ->>>>>>>>>>",bt[i]);
            if(bt[i]>0){
          p[i]=i+1;  i++;}        
+         ck--;
 }
+
+
 n=i;
 for(i=0;i<n;i++)
  
@@ -64,5 +66,7 @@ printf("\nProcess\t    Burst Time    \tWaiting Time\tTurnaround Time");
    avg_tat=(float)total/n;     
    printf("\n\nAverage Waiting Time=%f",avg_wt);
    printf("\nAverage Turnaround Time=%f\n",avg_tat);
-   fclose(fp);
+   
    return 0;
+   
+}
